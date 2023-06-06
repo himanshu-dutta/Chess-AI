@@ -78,8 +78,8 @@ def generate_metadata(src_md):
     for corner in src_md["corners"]:
         bbox = {
             "type": "corner",
-            "left": max(corner[0], 0),
-            "top": max(corner[1], 0),
+            "left": max(corner[0] - 20, 0),
+            "top": max(corner[1] - 20, 0),
             "width": 20,
             "height": 20,
         }

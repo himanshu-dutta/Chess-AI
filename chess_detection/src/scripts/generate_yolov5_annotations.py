@@ -8,10 +8,6 @@ labels_dict = {n: i for i, n in enumerate(labels)}
 label_count = len(labels)
 
 
-WIDTH = 1200
-HEIGHT = 800
-
-
 def generate_YOLOv5_annotation(metadata: dict, img_width: float, img_height: float):
     """
     Generates the `.txt` file for a given image. Each row of the file has the following format:
@@ -40,6 +36,8 @@ def generate_data_yaml(labels):
 
 def main(args: argparse.Namespace):
     src_dir = Path(args.src).absolute()
+    width = args.width
+    height = args.height
     assert src_dir.exists(), f"Source directory doesn't exist: {str(src_dir)}"
 
     files = [fl.name.split(".")[0] for fl in list(src_dir.rglob("*.json"))]
@@ -54,7 +52,7 @@ def main(args: argparse.Namespace):
         with open(str(md_fl_name)) as md_fp:
             src_md = json.load(md_fp)
 
-        yolo_annot = generate_YOLOv5_annotation(src_md, WIDTH, HEIGHT)
+        yolo_annot = generate_YOLOv5_annotation(src_md, width, height)
         yolo_annot_fl_name = src_dir / (fl_name + ".txt")
         with open(str(yolo_annot_fl_name), "w+") as md_fp:  # writing annotations
             md_fp.write(yolo_annot)
@@ -73,6 +71,7 @@ if __name__ == "__main__":
         required=True,
         help="Source directory with the images (.png) and metadata (.json) files.",
     )
-
+    parser.add_argument("--height", type=int, help="Image height", default=640)
+    parser.add_argument("--width", type=int, help="Image width", default=640)
     print(parser.parse_args())
     main(parser.parse_args())

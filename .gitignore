@@ -164,3 +164,4 @@ data/
 raw/
 models/
 .vscode/
+**/chess_board.html

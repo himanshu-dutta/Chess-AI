@@ -1,4 +1,4 @@
-from src import board as b
+from chess_detection.src import board as b
 from pathlib import Path
 import random
 import argparse
@@ -48,11 +48,12 @@ white_positions = [
     b.Pieces.PAWN | b.Colors.WHITE,
 ]
 board_positions_flat = black_positions + [b.Pieces.BLANK] * 32 + white_positions
+
 html_template_path = str(
-    Path("./src/scripts/data_generation/web/chess_board_template.html").absolute()
+    (Path(os.path.dirname(__file__)) / "web/chess_board_template.html").absolute()
 )
 html_doc_path = str(
-    Path("./src/scripts/data_generation/web/chess_board.html").absolute()
+    (Path(os.path.dirname(__file__)) / "web/chess_board.html").absolute()
 )
 
 

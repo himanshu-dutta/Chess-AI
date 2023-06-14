@@ -1,13 +1,14 @@
 from chess_detection.src import board as b
 from pathlib import Path
+from string import Template
+import json
 import random
 import argparse
+import time
 import os
 
 from PIL import ImageGrab
-from string import Template
-import json
-import time
+import tqdm
 
 
 black_positions = [
@@ -155,9 +156,8 @@ def main(args: argparse.Namespace):
 
     screen_bbox = [left, top, left + width, top + height]
 
-    for idx in range(num_samples):
+    for idx in tqdm.tqdm(range(num_samples)):
         fl_name = str(idx).zfill(idx_width)
-        print("Processing file: ", fl_name)
         board = generate_random_board()
         mdata = generate_metadata(board, width, height)
 

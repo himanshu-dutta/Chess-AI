@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chessboard</title>
+        <style>
+            canvas {
+                border: 3px solid #000000;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="chessboard"></canvas>
+
+        <script src="./res/js/chess_board.js"></script>
+        <script defer>
+            generateChessboard($fen, $width, $height);
+        </script>
+    </body>
+</html>

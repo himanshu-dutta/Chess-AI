@@ -8,6 +8,10 @@ numpy = "*"
 opencv-contrib-python = "*"
 pillow = "*"
 tqdm = "*"
+torch = "*"
+torchvision = "*"
+torchserve = "*"
+torch-model-archiver = "*"
 
 [dev-packages]
 black = "*"

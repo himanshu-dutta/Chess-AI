@@ -162,6 +162,6 @@ cython_debug/
 data/
 **/.DS_Store
 raw/
-models/
+./models/
 .vscode/
 **/chess_board.html

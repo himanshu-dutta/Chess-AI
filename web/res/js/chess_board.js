@@ -46,7 +46,7 @@ async function generateChessboard(fen, width, height) {
         for (let file = 0; file < currentRank.length; file++) {
             let currentSquare = currentRank[file];
 
-            if (!isNaN(currentSquare)) {
+            if (!isNaN(parseInt(currentSquare))) {
                 let emptySquares = parseInt(currentSquare);
                 for (let i = 0; i < emptySquares; i++) {
                     let x = fileIndex * squareWidth;
@@ -103,10 +103,20 @@ async function generateChessboard(fen, width, height) {
         }
     }
     // Add four green squares to the corners
-  ctx.fillStyle = "#00FF00";
-  ctx.fillRect(0, 0, squareWidth/5, squareHeight/5); // Top left corner
-  ctx.fillRect(width - squareWidth/5, 0, squareWidth/5, squareHeight/5); // Top right corner
-  ctx.fillRect(0, height - squareHeight/5, squareWidth/5, squareHeight/5); // Bottom left corner
-  ctx.fillRect(width - squareWidth/5, height - squareHeight/5, squareWidth/5, squareHeight/5); // Bottom right corner
-  canvas.style.border = `${borderWidth}px solid`;
+    ctx.fillStyle = "#00FF00";
+    ctx.fillRect(0, 0, squareWidth / 5, squareHeight / 5); // Top left corner
+    ctx.fillRect(width - squareWidth / 5, 0, squareWidth / 5, squareHeight / 5); // Top right corner
+    ctx.fillRect(
+        0,
+        height - squareHeight / 5,
+        squareWidth / 5,
+        squareHeight / 5
+    ); // Bottom left corner
+    ctx.fillRect(
+        width - squareWidth / 5,
+        height - squareHeight / 5,
+        squareWidth / 5,
+        squareHeight / 5
+    ); // Bottom right corner
+    canvas.style.border = `${borderWidth}px solid`;
 }

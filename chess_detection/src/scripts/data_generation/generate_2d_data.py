@@ -96,34 +96,36 @@ def generate_piece_bounding_boxes_from_board(board: b.Board, width: int, height:
 
 
 def generate_corner_bounding_boxes(width: int, height: int):
+    w = width / 40
+    h = height / 40
     bboxes = [
         {
             "type": "corner",
             "left": 0,
             "top": 0,
-            "width": 20,
-            "height": 20,
+            "width": w,
+            "height": h,
         },
         {
             "type": "corner",
-            "left": width - 20,
+            "left": width - w,
             "top": 0,
-            "width": 20,
-            "height": 20,
+            "width": w,
+            "height": h,
         },
         {
             "type": "corner",
             "left": 0,
-            "top": height - 20,
-            "width": 20,
-            "height": 20,
+            "top": height - h,
+            "width": w,
+            "height": h,
         },
         {
             "type": "corner",
-            "left": width - 20,
-            "top": height - 20,
-            "width": 20,
-            "height": 20,
+            "left": width - w,
+            "top": height - h,
+            "width": w,
+            "height": h,
         },
     ]
     return bboxes
@@ -166,7 +168,7 @@ def main(args: argparse.Namespace):
         )
         with open(html_doc_path, "t+w") as fp:
             fp.write(html_doc)
-        time.sleep(0.5)
+        time.sleep(0.75)
         img = ImageGrab.grab(screen_bbox)
 
         img_path = dest_dir / (fl_name + ".png")

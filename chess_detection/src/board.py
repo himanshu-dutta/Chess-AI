@@ -84,9 +84,8 @@ class Board:
         board. Analogous to the FEN representation, the array representation also
         starts from eight rank and eight file.
 
-        We use a modified version of FEN where we only consider the first two fields:
+        We use a modified version of FEN where we only consider the first field:
         - `Piece Placement`
-        - `Active Color`
 
         More on FEN: https://www.chess.com/terms/fen-chess
         """
@@ -108,8 +107,6 @@ class Board:
         return cls(piece_placements, active_color)
 
     def fen(self) -> str:
-        active_color_fen = "b" if self.active_color == Colors.BLACK else "w"
-
         piece_placements_fen: str = ""
         for rank in self.piece_placements:
             rank_fen: str = ""
@@ -123,5 +120,5 @@ class Board:
                     rank_fen += self.encode_fen_square(square)
             piece_placements_fen += ("/" if piece_placements_fen else "") + rank_fen
 
-        fen = piece_placements_fen + " " + active_color_fen
+        fen = piece_placements_fen
         return fen
